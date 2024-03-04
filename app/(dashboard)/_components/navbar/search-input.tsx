@@ -3,17 +3,15 @@
 import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import qs from "query-string";
-import { useEffect, useState } from "react";
-import { useDebounce } from "usehooks-ts";
+import { useEffect } from "react";
+import { useDebounceValue } from "usehooks-ts";
 
 import { Input } from "@/components/ui/input";
 
 export const SearchInput = () => {
   const router = useRouter();
 
-  const [value, setValue] = useState<string>("");
-
-  const debouncedValue = useDebounce(value, 500);
+  const [debouncedValue, setValue] = useDebounceValue("", 500);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -40,7 +38,6 @@ export const SearchInput = () => {
         className="w-full max-w-[516px] pl-9"
         placeholder="Search boards"
         onChange={handleChange}
-        value={value}
       />
     </div>
   );
