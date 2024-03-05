@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Suspense } from "react";
 
 import { Loading } from "@/components/auth/loading";
+import { Toaster } from "@/components/ui/sonner";
 import { ConvexClientProvider } from "@/providers/convex-client-provider";
 
 import "./globals.css";
@@ -23,7 +24,10 @@ const RootLayout = ({ children }: RootLayoutProps) => {
     <html>
       <body className={font.className}>
         <Suspense fallback={<Loading />}>
-          <ConvexClientProvider>{children}</ConvexClientProvider>
+          <ConvexClientProvider>
+            <Toaster />
+            {children}
+          </ConvexClientProvider>
         </Suspense>
       </body>
     </html>
