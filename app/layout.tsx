@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { Loading } from "@/components/auth/loading";
 import { Toaster } from "@/components/ui/sonner";
 import { ConvexClientProvider } from "@/providers/convex-client-provider";
+import { ModalProvider } from "@/providers/modal-provider";
 
 import "./globals.css";
 
@@ -26,6 +27,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
         <Suspense fallback={<Loading />}>
           <ConvexClientProvider>
             <Toaster />
+            <ModalProvider />
             {children}
           </ConvexClientProvider>
         </Suspense>
