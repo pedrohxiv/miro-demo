@@ -2,6 +2,7 @@
 
 import { useOrganization } from "@clerk/nextjs";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -25,6 +26,8 @@ export const EmptyBanner = ({
 
   const { organization } = useOrganization();
 
+  const router = useRouter();
+
   const onClick = () => {
     if (!organization) {
       return;
@@ -36,6 +39,8 @@ export const EmptyBanner = ({
     })
       .then((id) => {
         toast.success("Board created");
+
+        router.push(`/board/${id}`);
       })
       .catch(() => toast.error("Failed to create board"));
   };
