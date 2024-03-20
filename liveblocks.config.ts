@@ -3,9 +3,12 @@ import { createLiveblocksContext, createRoomContext } from "@liveblocks/react";
 
 const client = createClient({
   authEndpoint: "/api/liveblocks-auth",
+  throttle: 16,
 });
 
-type Presence = {};
+type Presence = {
+  cursor: { x: number; y: number } | null;
+};
 
 type Storage = {};
 
