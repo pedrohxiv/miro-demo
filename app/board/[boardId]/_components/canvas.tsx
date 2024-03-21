@@ -33,6 +33,7 @@ import { Info } from "./info";
 import { LayerPreview } from "./layer-preview";
 import { Participants } from "./participants";
 import { SelectionBox } from "./selection-box";
+import { SelectionTools } from "./selection-tools";
 import { Toolbar } from "./toolbar";
 
 const MAX_LAYERS = 100;
@@ -192,7 +193,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
     [canvasState]
   );
 
-  const unselectLayers = useMutation(({ self, setMyPresence }) => {
+  const unselectLayer = useMutation(({ self, setMyPresence }) => {
     if (self.presence.selection.length > 0) {
       setMyPresence({ selection: [] }, { addToHistory: true });
     }
@@ -227,7 +228,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         canvasState.mode === CanvasMode.None ||
         canvasState.mode === CanvasMode.Pressing
       ) {
-        unselectLayers();
+        unselectLayer();
         setCanvasState({ mode: CanvasMode.None });
       } else if (canvasState.mode === CanvasMode.Inserting) {
         insertLayer(canvasState.layerType, point);
@@ -275,6 +276,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         canUndo={canUndo}
         canRedo={canRedo}
       />
+      <SelectionTools camera={camera} setLastUsedColor={setLastUsedColor} />
       <svg
         className="h-[100vh] w-[100vw]"
         onWheel={onWhell}
