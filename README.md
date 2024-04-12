@@ -34,12 +34,6 @@ O Miro Clone é um projeto abrangente desenvolvido do zero, proporcionando uma e
 
 O projeto utiliza diversas dependências para garantir seu funcionamento suave:
 
-Obrigado por fornecer a lista atualizada de dependências. Vou ajustar o README de acordo:
-
-## Dependências
-
-O projeto utiliza diversas dependências para garantir seu funcionamento suave:
-
 - `@clerk/nextjs:` ^4.29.8
 - `@liveblocks/client:` ^1.10.4
 - `@liveblocks/node:` ^1.10.4
